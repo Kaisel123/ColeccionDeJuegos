@@ -32,7 +32,7 @@
                     <navigationItem key="navigationItem" id="DPi-KM-y1U">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fgE-l1-Sgv">
                             <connections>
-                                <segue destination="7Kp-zu-c3k" kind="show" id="LoZ-wA-Clu"/>
+                                <segue destination="7Kp-zu-c3k" kind="show" identifier="juegoSegue" id="LoZ-wA-Clu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -65,10 +65,17 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-Om-ANv">
-                                <rect key="frame" x="179.5" y="344" width="55" height="30"/>
+                                <rect key="frame" x="180" y="372" width="55" height="30"/>
                                 <state key="normal" title="Agregar"/>
                                 <connections>
                                     <action selector="agregarTapped:" destination="7Kp-zu-c3k" eventType="touchUpInside" id="I8D-vA-tfl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7f-aa-J9z">
+                                <rect key="frame" x="180" y="421" width="55" height="30"/>
+                                <state key="normal" title="Eliminar"/>
+                                <connections>
+                                    <action selector="eliminarTapped:" destination="7Kp-zu-c3k" eventType="touchUpInside" id="KI2-gE-eaD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -77,10 +84,12 @@
                             <constraint firstItem="V7j-hW-QOA" firstAttribute="centerX" secondItem="uOP-a0-om4" secondAttribute="centerX" id="1rh-1b-php"/>
                             <constraint firstItem="V7j-hW-QOA" firstAttribute="top" secondItem="1D0-3S-jBm" secondAttribute="bottom" constant="20" id="CPf-8Y-5Uc"/>
                             <constraint firstItem="1D0-3S-jBm" firstAttribute="width" secondItem="V7j-hW-QOA" secondAttribute="width" multiplier="8.75" constant="-2170" id="EoD-7u-ycf"/>
-                            <constraint firstItem="UDA-Om-ANv" firstAttribute="centerX" secondItem="uOP-a0-om4" secondAttribute="centerX" id="Jvt-CO-3FN"/>
+                            <constraint firstItem="f7f-aa-J9z" firstAttribute="centerX" secondItem="uOP-a0-om4" secondAttribute="centerX" id="Kaj-Lt-FDO"/>
+                            <constraint firstItem="UDA-Om-ANv" firstAttribute="top" secondItem="V7j-hW-QOA" secondAttribute="bottom" constant="48" id="QZb-6Z-bi7"/>
+                            <constraint firstItem="f7f-aa-J9z" firstAttribute="top" secondItem="UDA-Om-ANv" secondAttribute="bottom" constant="19" id="UJ5-ot-qnb"/>
                             <constraint firstItem="1D0-3S-jBm" firstAttribute="centerX" secondItem="uOP-a0-om4" secondAttribute="centerX" id="bXZ-2P-Z3g"/>
                             <constraint firstItem="1D0-3S-jBm" firstAttribute="top" secondItem="gfa-UZ-jXw" secondAttribute="top" constant="32" id="gnA-rr-XJD"/>
-                            <constraint firstItem="UDA-Om-ANv" firstAttribute="top" secondItem="V7j-hW-QOA" secondAttribute="bottom" constant="20" id="tmj-NL-EuX"/>
+                            <constraint firstItem="UDA-Om-ANv" firstAttribute="centerX" secondItem="uOP-a0-om4" secondAttribute="centerX" id="xt3-S4-WO7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gfa-UZ-jXw"/>
                     </view>
@@ -100,6 +109,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="JuegoImageView" destination="1D0-3S-jBm" id="DBX-wB-aOH"/>
+                        <outlet property="agregarActualizarBoton" destination="UDA-Om-ANv" id="grH-kI-alc"/>
+                        <outlet property="eliminarBoton" destination="f7f-aa-J9z" id="SvR-YV-hHL"/>
                         <outlet property="tituloTextField" destination="V7j-hW-QOA" id="WWo-Vr-yDc"/>
                     </connections>
                 </viewController>

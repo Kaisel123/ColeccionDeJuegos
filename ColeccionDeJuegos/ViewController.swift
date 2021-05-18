@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
 
     @IBOutlet weak var tableView: UITableView!
@@ -37,12 +37,44 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let juego = juegos[indexPath.row]
+        performSegue(withIdentifier: "juegoSegue", sender: juego)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let siguienteVC = segue.destination as! JuegosViewController
+        siguienteVC.juego = sender as? Juego
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        
+        // self.tableView.isEditing = true
+    }
+    
+    /*func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 
-
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            context.delete(juegos[indexPath.row])
+            juegos.remove(at: indexPath.row)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        
+        let objetoMovido = self.juegos[fromIndexPath.row]
+        juegos.remove(at: fromIndexPath.row)
+        juegos.insert(objetoMovido, at: to.row)
+    }*/
+    
 }
 
