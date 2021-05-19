@@ -18,6 +18,32 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HXE-I3-uII">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="hfL-MU-EBe" detailTextLabel="wbd-gk-6U0" style="IBUITableViewCellStyleSubtitle" id="a1c-uk-inn">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a1c-uk-inn" id="dsh-HH-HuC">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hfL-MU-EBe">
+                                                    <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wbd-gk-6U0">
+                                                    <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -30,6 +56,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="DPi-KM-y1U">
+                        <barButtonItem key="leftBarButtonItem" title="Editar" id="LzF-N9-7kf">
+                            <connections>
+                                <action selector="edicion:" destination="BYZ-38-t0r" id="TXg-0v-P8R"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fgE-l1-Sgv">
                             <connections>
                                 <segue destination="7Kp-zu-c3k" kind="show" identifier="juegoSegue" id="LoZ-wA-Clu"/>
@@ -37,6 +68,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="botonEditar" destination="LzF-N9-7kf" id="IPb-dL-MI4"/>
                         <outlet property="tableView" destination="HXE-I3-uII" id="7kD-Qv-0KG"/>
                     </connections>
                 </viewController>
@@ -64,15 +96,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="054-Qa-UwE">
+                                <rect key="frame" x="67" y="393" width="280" height="146"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="KMU-8i-g6e"/>
+                                    <constraint firstAttribute="height" constant="146" id="Pzg-eu-QpS"/>
+                                </constraints>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seleccionar Categoria" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0YS-li-VHU">
+                                <rect key="frame" x="123" y="357" width="168" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-Om-ANv">
-                                <rect key="frame" x="180" y="372" width="55" height="30"/>
+                                <rect key="frame" x="179.5" y="553" width="55" height="30"/>
                                 <state key="normal" title="Agregar"/>
                                 <connections>
                                     <action selector="agregarTapped:" destination="7Kp-zu-c3k" eventType="touchUpInside" id="I8D-vA-tfl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7f-aa-J9z">
-                                <rect key="frame" x="180" y="421" width="55" height="30"/>
+                                <rect key="frame" x="179.5" y="602" width="55" height="30"/>
                                 <state key="normal" title="Eliminar"/>
                                 <connections>
                                     <action selector="eliminarTapped:" destination="7Kp-zu-c3k" eventType="touchUpInside" id="KI2-gE-eaD"/>
@@ -82,13 +127,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="V7j-hW-QOA" firstAttribute="centerX" secondItem="uOP-a0-om4" secondAttribute="centerX" id="1rh-1b-php"/>
+                            <constraint firstItem="0YS-li-VHU" firstAttribute="centerX" secondItem="uOP-a0-om4" secondAttribute="centerX" id="2cA-2l-sTo"/>
+                            <constraint firstItem="0YS-li-VHU" firstAttribute="top" secondItem="V7j-hW-QOA" secondAttribute="bottom" constant="33" id="C48-iO-FQ6"/>
                             <constraint firstItem="V7j-hW-QOA" firstAttribute="top" secondItem="1D0-3S-jBm" secondAttribute="bottom" constant="20" id="CPf-8Y-5Uc"/>
                             <constraint firstItem="1D0-3S-jBm" firstAttribute="width" secondItem="V7j-hW-QOA" secondAttribute="width" multiplier="8.75" constant="-2170" id="EoD-7u-ycf"/>
                             <constraint firstItem="f7f-aa-J9z" firstAttribute="centerX" secondItem="uOP-a0-om4" secondAttribute="centerX" id="Kaj-Lt-FDO"/>
-                            <constraint firstItem="UDA-Om-ANv" firstAttribute="top" secondItem="V7j-hW-QOA" secondAttribute="bottom" constant="48" id="QZb-6Z-bi7"/>
                             <constraint firstItem="f7f-aa-J9z" firstAttribute="top" secondItem="UDA-Om-ANv" secondAttribute="bottom" constant="19" id="UJ5-ot-qnb"/>
+                            <constraint firstItem="054-Qa-UwE" firstAttribute="centerX" secondItem="uOP-a0-om4" secondAttribute="centerX" id="Znn-vY-bwF"/>
+                            <constraint firstItem="054-Qa-UwE" firstAttribute="top" secondItem="0YS-li-VHU" secondAttribute="bottom" constant="15" id="bBl-Ss-NRp"/>
                             <constraint firstItem="1D0-3S-jBm" firstAttribute="centerX" secondItem="uOP-a0-om4" secondAttribute="centerX" id="bXZ-2P-Z3g"/>
                             <constraint firstItem="1D0-3S-jBm" firstAttribute="top" secondItem="gfa-UZ-jXw" secondAttribute="top" constant="32" id="gnA-rr-XJD"/>
+                            <constraint firstItem="UDA-Om-ANv" firstAttribute="top" secondItem="054-Qa-UwE" secondAttribute="bottom" constant="14" id="lTq-30-9Xe"/>
                             <constraint firstItem="UDA-Om-ANv" firstAttribute="centerX" secondItem="uOP-a0-om4" secondAttribute="centerX" id="xt3-S4-WO7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gfa-UZ-jXw"/>
@@ -111,6 +160,7 @@
                         <outlet property="JuegoImageView" destination="1D0-3S-jBm" id="DBX-wB-aOH"/>
                         <outlet property="agregarActualizarBoton" destination="UDA-Om-ANv" id="grH-kI-alc"/>
                         <outlet property="eliminarBoton" destination="f7f-aa-J9z" id="SvR-YV-hHL"/>
+                        <outlet property="pickerView" destination="054-Qa-UwE" id="8jn-aU-NxN"/>
                         <outlet property="tituloTextField" destination="V7j-hW-QOA" id="WWo-Vr-yDc"/>
                     </connections>
                 </viewController>

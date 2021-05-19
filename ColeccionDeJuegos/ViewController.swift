@@ -1,19 +1,22 @@
-//
-//  ViewController.swift
-//  ColeccionDeJuegos
-//
-//  Created by David Alejo Apaza on 5/17/21.
-//  Copyright © 2021 David Alejo Apaza. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    
 
     @IBOutlet weak var tableView: UITableView!
     
     var juegos:[Juego] = []
+    
+    @IBOutlet weak var botonEditar: UIBarButtonItem!
+    
+    @IBAction func edicion(_ sender: Any) {
+        tableView.isEditing = !tableView.isEditing
+        
+        if tableView.isEditing == true {
+            botonEditar.title = "Guardar"
+        } else {
+            botonEditar.title = "Editar"
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -30,9 +33,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         let juego = juegos[indexPath.row]
         cell.textLabel?.text = juego.titulo
+        cell.detailTextLabel?.text = "Categoria:  \(juego.categoria!)"
         cell.imageView?.image = UIImage(data: (juego.imagen!))
         return cell
     }
@@ -51,11 +55,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        
-        // self.tableView.isEditing = true
+        tableView.isEditing = false
     }
     
-    /*func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
@@ -74,7 +77,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let objetoMovido = self.juegos[fromIndexPath.row]
         juegos.remove(at: fromIndexPath.row)
         juegos.insert(objetoMovido, at: to.row)
-    }*/
+    }
     
 }
-
